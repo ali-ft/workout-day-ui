@@ -6,7 +6,17 @@
 
 **https://ali-ft.github.io/workout-day-ui/**
 
-با هر push به `main`، GitHub Actions به‌صورت خودکار روی GitHub Pages deploy می‌کند.
+با هر push به `main`، GitHub Actions به‌صورت خودکار deploy می‌کند.
+
+### راه‌اندازی یک‌باره GitHub Pages
+
+اگر deploy با خطای `404` / `Failed to create deployment` شکست خورد:
+
+1. برو به [Settings → Pages](https://github.com/ali-ft/workout-day-ui/settings/pages)
+2. در **Build and deployment → Source** گزینه **GitHub Actions** را انتخاب کن (نه «Deploy from a branch»)
+3. workflow را دوباره اجرا کن: **Actions → Deploy to GitHub Pages → Re-run all jobs**
+
+تا Pages فعال نشود، مرحله `deploy-pages` همیشه 404 می‌دهد — build موفق بوده و مشکل از تنظیمات repo است.
 
 ## اجرا
 
