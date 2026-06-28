@@ -2,6 +2,12 @@
 
 صفحهٔ «تمرین امروز»؛ یک رابط کاربری موبایل‌فرست، RTL و responsive برای نمایش برنامهٔ تمرینی روزانه. داده‌ها مستقیم از `workout-day.json` خوانده می‌شوند — بدون بک‌اند.
 
+## دمو آنلاین
+
+**https://ali-ft.github.io/workout-day-ui/**
+
+با هر push به `main`، GitHub Actions به‌صورت خودکار روی GitHub Pages deploy می‌کند.
+
 ## اجرا
 
 ```bash
@@ -15,6 +21,13 @@ npm run dev
 ```bash
 npm run build   # ساخت نسخهٔ production
 npm run preview # پیش‌نمایش build
+```
+
+برای تست build مشابه GitHub Pages:
+
+```bash
+VITE_BASE_PATH=/workout-day-ui/ npm run build
+npm run preview
 ```
 
 ## اسکرین‌شات‌ها
