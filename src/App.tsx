@@ -59,6 +59,12 @@ export default function App() {
             ))}
           </div>
         </section>
+
+        <footer className="app-footer">
+          <p>
+            created by <span className="app-footer-name">Ali Fata</span>
+          </p>
+        </footer>
       </main>
 
       {selected && (
