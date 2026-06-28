@@ -8,15 +8,27 @@
 
 با هر push به `main`، GitHub Actions به‌صورت خودکار deploy می‌کند.
 
-### راه‌اندازی یک‌باره GitHub Pages
+### راه‌اندازی یک‌باره GitHub Pages (الزامی)
 
-اگر deploy با خطای `404` / `Failed to create deployment` شکست خورد:
+خطای `404 / Failed to create deployment` یعنی Pages هنوز فعال نشده. **حتماً** این کار را بکن:
 
-1. برو به [Settings → Pages](https://github.com/ali-ft/workout-day-ui/settings/pages)
-2. در **Build and deployment → Source** گزینه **GitHub Actions** را انتخاب کن (نه «Deploy from a branch»)
-3. workflow را دوباره اجرا کن: **Actions → Deploy to GitHub Pages → Re-run all jobs**
+1. برو به **Settings → Pages**  
+   https://github.com/ali-ft/workout-day-ui/settings/pages
 
-تا Pages فعال نشود، مرحله `deploy-pages` همیشه 404 می‌دهد — build موفق بوده و مشکل از تنظیمات repo است.
+2. زیر **Build and deployment**:
+   - **Source** را روی **GitHub Actions** بگذار  
+   - اگر این گزینه را نمی‌بینی، repo باید **Public** باشد (Settings → General → Danger Zone → Change visibility)
+
+3. **Save** بزن — صفحه باید پیامی شبیه «Your site is live at…» یا «GitHub Actions configured» نشان دهد
+
+4. workflow را دوباره اجرا کن:  
+   **Actions → Deploy to GitHub Pages → Re-run all jobs**
+
+> workflow شامل `configure-pages` است که Pages را راه می‌اندازد، ولی **بدون انتخاب Source = GitHub Actions در Settings، deploy همیشه 404 می‌دهد.**
+
+### هشدار Node 20
+
+پیام `Node 20 is being deprecated` از داخل action `deploy-pages` می‌آید، نه از build — روی deploy اثری ندارد و قابل نادیده گرفتن است.
 
 ## اجرا
 
