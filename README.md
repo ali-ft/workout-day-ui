@@ -1,93 +1,58 @@
-# تمرین امروز — Workout Day UI
+# Workout Day UI
 
-صفحهٔ «تمرین امروز»؛ یک رابط کاربری موبایل‌فرست، RTL و responsive برای نمایش برنامهٔ تمرینی روزانه. داده‌ها مستقیم از `workout-day.json` خوانده می‌شوند — بدون بک‌اند.
+A mobile-first, RTL workout page built with React and TypeScript. Workout data is loaded from a static JSON file — no backend required.
 
-## دمو آنلاین
+**Live demo:** [ali-ft.github.io/workout-day-ui](https://ali-ft.github.io/workout-day-ui/)
 
-**https://ali-ft.github.io/workout-day-ui/**
+## Stack
 
-با هر push به `main`، workflow محتوای build‌شده را روی branch `gh-pages` deploy می‌کند.
+- React 19 · TypeScript · Vite 6 · Tailwind CSS 4 · Lucide React
 
-### تنظیم GitHub Pages (یک‌بار)
+## Features
 
-1. **Settings → Pages**  
-   https://github.com/ali-ft/workout-day-ui/settings/pages
+- Persian UI with full RTL support (Vazirmatn)
+- Light / dark theme (persisted in `localStorage`)
+- Exercise cards with image, sets × reps, rest time, and muscle tags
+- Detail panel with video, metadata, coach tip, and step-by-step instructions
+- Responsive layout (single column on mobile, 2-column grid on desktop)
 
-2. **Build and deployment → Source**:
-   - **Deploy from a branch**
-   - Branch: **`gh-pages`**
-   - Folder: **`/ (root)`**
+## Getting started
 
-3. Save — بعد از اولین workflow موفق، سایت بالا می‌آید.
-
-> اگر Source روی branch **`main`** باشد، GitHub فایل خام پروژه (`/src/main.tsx`) را serve می‌کند و صفحه سفید می‌ماند. حتماً **`gh-pages`** باشد.
-
-## اجرا
+**Requirements:** Node.js 18+
 
 ```bash
-# نیاز: Node.js 18+
 npm install
-npm run dev
+npm run dev        # http://localhost:5173
 ```
-
-مرورگر: [http://localhost:5173](http://localhost:5173)
 
 ```bash
-npm run build   # ساخت نسخهٔ production
-npm run preview # پیش‌نمایش build
+npm run build      # production build → dist/
+npm run preview    # preview production build locally
 ```
 
-برای تست build مشابه GitHub Pages:
+Build for GitHub Pages (subpath `/workout-day-ui/`):
 
 ```bash
 VITE_BASE_PATH=/workout-day-ui/ npm run build
-npm run preview
 ```
 
-## اسکرین‌شات‌ها
+## Project structure
 
-| موبایل (تاریک) | موبایل (روشن) | دسکتاپ |
-|---|---|---|
-| ![mobile dark](docs/screenshots/mobile-dark.png) | ![mobile light](docs/screenshots/mobile-light.png) | ![desktop](docs/screenshots/desktop-light.png) |
-
-## تصمیم‌های طراحی
-
-### پالت رنگ
-- **Accent نارنجی-مرجانی** (`#E85D3A` / `#FF7247`): انرژی و حس ورزشی
-- **Teal** برای زمان استراحت: تمایز بصری بین «کار» و «استراحت»
-- **بنفش** برای تگ عضله: دسته‌بندی سریع بدون شلوغی
-- **پس‌زمینهٔ گرم** در حالت روشن و **charcoal عمیق** در حالت تاریک
-
-### چیدمان
-- **Mobile First**: کارت‌های افقی با تصویر، نام، متادیتا و تگ عضله
-- **دسکتاپ**: گرید ۲ ستونه با max-width محدود برای خوانایی
-- **RTL کامل**: `dir="rtl"` در HTML + فونت Vazirmatn
-
-### تعامل
-- کلیک روی هر کارت → **bottom sheet** (موبایل) / **modal** (دسکتاپ) با ویدیو، عضلات، نکته مربی و دستورالعمل گام‌به‌گام
-- **Dark Mode** با toggle و ذخیره در localStorage
-- **Fallback تصویر** با آیکون سیلوئت و shimmer هنگام لود
-- انیمیشن fade-up با stagger + `prefers-reduced-motion`
-
-### ساختار کد
 ```
 src/
-├── components/   # PageHeader, CoachTip, ExerciseCard, ExerciseDetail, ...
-├── hooks/        # useTheme
-├── types/        # WorkoutDay, Exercise
-├── utils/        # formatSetsReps, toPersianNumber, ...
-└── data/         # workout-day.json
+├── components/     UI components (cards, header, detail panel, icons)
+├── data/           workout-day.json
+├── hooks/          useTheme
+├── types/          WorkoutDay, Exercise
+└── utils/          toPersianNumber, formatters
 ```
 
-## استفاده از AI
+## Data
 
-- **Cursor (Claude)**: طراحی UI/UX، پیاده‌سازی کامل، CSS، و ساختار کامپوننت‌ها
-- **AI برای تصمیم‌های طراحی**: انتخاب پالت رنگ، سلسله‌مراتب بصری، و micro-interactionها
+Edit `src/data/workout-day.json` to change the workout content. The app imports it directly at build time.
 
-## تکنولوژی
+## Deployment
 
-- React 19 + TypeScript
-- Vite 6
-- Tailwind CSS 4
-- Lucide React (آیکون‌های استاندارد و خوانا)
-- بدون routing، state management خارجی، یا UI library
+Pushes to `main` trigger a GitHub Actions workflow that builds the app and publishes `dist/` to the `gh-pages` branch.
+
+In **Settings → Pages**, set the source to branch **`gh-pages`** / **`/(root)`**.
