@@ -37,8 +37,11 @@ jobs:
         run: |
           grep -q '/workout-day-ui/assets/' dist/index.html
           grep -qv '/src/main.tsx' dist/index.html
-          grep -q 'og-image.jpg' dist/index.html
+          grep -q 'prefix="og: https://ogp.me/ns#"' dist/index.html
+          grep -q 'property="og:image" content="https://ali-ft.github.io/workout-day-ui/og-image.jpg"' dist/index.html
+          grep -qv 'og-image.jpg?v=' dist/index.html
           test -f dist/og-image.jpg
+          test -f dist/robots.txt
           test "$(stat -c%s dist/og-image.jpg)" -gt 10000
 
       - name: Deploy to gh-pages branch

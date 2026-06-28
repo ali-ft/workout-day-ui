@@ -242,11 +242,27 @@ body {
   color: var(--header-fg);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   border: 1px solid rgba(232, 93, 58, 0.14);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
     0 12px 36px rgba(232, 93, 58, 0.1),
     0 4px 12px rgba(15, 20, 25, 0.05);
+}
+
+.header-decor {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* ── Dark banner ── */
@@ -322,6 +338,7 @@ body {
   background: var(--header-accent-line);
   opacity: 0.85;
   pointer-events: none;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
 .header-glow {

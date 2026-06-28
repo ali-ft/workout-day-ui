@@ -30,11 +30,13 @@ export function PageHeader({
       </div>
 
       <div className={`page-header-body ${isDark ? "page-header-body--dark" : "page-header-body--light"}`}>
-        <div className="header-pattern" aria-hidden />
-        <div className="header-ring" aria-hidden />
-        <div className="header-glow header-glow-a" aria-hidden />
-        <div className="header-glow header-glow-b" aria-hidden />
-        <div className="header-accent-line" aria-hidden />
+        <div className="header-decor" aria-hidden>
+          <div className="header-pattern" />
+          <div className="header-ring" />
+          <div className="header-glow header-glow-a" />
+          <div className="header-glow header-glow-b" />
+          <div className="header-accent-line" />
+        </div>
 
         <div className="header-content">
           <span className="header-focus-pill">{toPersianNumber(focus)}</span>
