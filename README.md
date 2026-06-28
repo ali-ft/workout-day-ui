@@ -6,29 +6,21 @@
 
 **https://ali-ft.github.io/workout-day-ui/**
 
-با هر push به `main`، GitHub Actions به‌صورت خودکار deploy می‌کند.
+با هر push به `main`، workflow محتوای build‌شده را روی branch `gh-pages` deploy می‌کند.
 
-### راه‌اندازی یک‌باره GitHub Pages (الزامی)
+### تنظیم GitHub Pages (یک‌بار)
 
-خطای `404 / Failed to create deployment` یعنی Pages هنوز فعال نشده. **حتماً** این کار را بکن:
-
-1. برو به **Settings → Pages**  
+1. **Settings → Pages**  
    https://github.com/ali-ft/workout-day-ui/settings/pages
 
-2. زیر **Build and deployment**:
-   - **Source** را روی **GitHub Actions** بگذار  
-   - اگر این گزینه را نمی‌بینی، repo باید **Public** باشد (Settings → General → Danger Zone → Change visibility)
+2. **Build and deployment → Source**:
+   - **Deploy from a branch**
+   - Branch: **`gh-pages`**
+   - Folder: **`/ (root)`**
 
-3. **Save** بزن — صفحه باید پیامی شبیه «Your site is live at…» یا «GitHub Actions configured» نشان دهد
+3. Save — بعد از اولین workflow موفق، سایت بالا می‌آید.
 
-4. workflow را دوباره اجرا کن:  
-   **Actions → Deploy to GitHub Pages → Re-run all jobs**
-
-> workflow شامل `configure-pages` است که Pages را راه می‌اندازد، ولی **بدون انتخاب Source = GitHub Actions در Settings، deploy همیشه 404 می‌دهد.**
-
-### هشدار Node 20
-
-پیام `Node 20 is being deprecated` از داخل action `deploy-pages` می‌آید، نه از build — روی deploy اثری ندارد و قابل نادیده گرفتن است.
+> اگر Source روی branch **`main`** باشد، GitHub فایل خام پروژه (`/src/main.tsx`) را serve می‌کند و صفحه سفید می‌ماند. حتماً **`gh-pages`** باشد.
 
 ## اجرا
 
